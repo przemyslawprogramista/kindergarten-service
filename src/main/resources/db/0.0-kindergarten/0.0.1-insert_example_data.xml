@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+
+
+    <changeSet id="school-1" author="Przemek">
+        <insert tableName="school">
+            <column name="name" value="ZS 1"/>
+            <column name="hour_price" valueNumeric="5"/>
+        </insert>
+    </changeSet>
+    <changeSet id="school-2" author="Przemek">
+        <insert tableName="school">
+            <column name="name" value="ZS 2"/>
+            <column name="hour_price" valueNumeric="5.5"/>
+        </insert>
+    </changeSet>
+    <changeSet id="school-3" author="Przemek">
+        <insert tableName="school">
+            <column name="name" value="ZS 1"/>
+            <column name="hour_price" valueNumeric="7.79"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="parent-1" author="Przemek">
+        <insert tableName="parent">
+            <column name="firstname" value="Jan"/>
+            <column name="lastname" value="Kowalski"/>
+        </insert>
+    </changeSet>
+    <changeSet id="parent-2" author="Przemek">
+        <insert tableName="parent">
+            <column name="firstname" value="Karol"/>
+            <column name="lastname" value="Nowak"/>
+        </insert>
+    </changeSet>
+    <changeSet id="parent-3" author="Przemek">
+        <insert tableName="parent">
+            <column name="firstname" value="Anna"/>
+            <column name="lastname" value="Mak"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="child-1" author="Przemek">
+        <insert tableName="child">
+            <column name="firstname" value="Andrzej"/>
+            <column name="lastname" value="Kowalski"/>
+            <column name="parent_id" valueNumeric="1"/>
+            <column name="school_id" valueNumeric="1"/>
+        </insert>
+    </changeSet>
+    <changeSet id="child-2" author="Przemek">
+        <insert tableName="child">
+            <column name="firstname" value="Joanna"/>
+            <column name="lastname" value="Nowak"/>
+            <column name="parent_id" valueNumeric="2"/>
+            <column name="school_id" valueNumeric="2"/>
+        </insert>
+    </changeSet>
+    <changeSet id="child-3" author="Przemek">
+        <insert tableName="child">
+            <column name="firstname" value="Amelia"/>
+            <column name="lastname" value="Mak"/>
+            <column name="parent_id" valueNumeric="3"/>
+            <column name="school_id" valueNumeric="3"/>
+        </insert>
+    </changeSet>
+    <changeSet id="child-4" author="Przemek">
+        <insert tableName="child">
+            <column name="firstname" value="Józefa"/>
+            <column name="lastname" value="Mak"/>
+            <column name="parent_id" valueNumeric="3"/>
+            <column name="school_id" valueNumeric="2"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="attendance-1" author="Przemek">
+        <insert tableName="attendance">
+            <column name="entry_date" valueDate="2024-02-18 12:12:59"/>
+            <column name="exit_date" valueDate="2024-02-18 16:12:59"/>
+            <column name="child_id" valueNumeric="1"/>
+        </insert>
+    </changeSet>
+    <changeSet id="attendance-2" author="Przemek">
+        <insert tableName="attendance">
+            <column name="entry_date" valueDate="2024-02-17 06:12:59"/>
+            <column name="exit_date" valueDate="2024-02-17 14:12:59"/>
+            <column name="child_id" valueNumeric="1"/>
+        </insert>
+    </changeSet>
+    <changeSet id="attendance-3" author="Przemek">
+        <insert tableName="attendance">
+            <column name="entry_date" valueDate="2024-02-18 06:12:59"/>
+            <column name="exit_date" valueDate="2024-02-18 11:12:59"/>
+            <column name="child_id" valueNumeric="1"/>
+        </insert>
+    </changeSet>
+
+
+    <changeSet id="attendance-4" author="Przemek">
+        <insert tableName="attendance">
+            <column name="entry_date" valueDate="2024-02-18 05:12:59"/>
+            <column name="exit_date" valueDate="2024-02-18 11:01:59"/>
+            <column name="child_id" valueNumeric="2"/>
+        </insert>
+    </changeSet>
+    <changeSet id="attendance-5" author="Przemek">
+        <insert tableName="attendance">
+            <column name="entry_date" valueDate="2024-02-17 06:12:59"/>
+            <column name="exit_date" valueDate="2024-02-17 12:00:00"/>
+            <column name="child_id" valueNumeric="2"/>
+        </insert>
+    </changeSet>
+    <changeSet id="attendance-6" author="Przemek">
+        <insert tableName="attendance">
+            <column name="entry_date" valueDate="2024-02-18 06:12:59"/>
+            <column name="exit_date" valueDate="2024-02-18 11:12:59"/>
+            <column name="child_id" valueNumeric="2"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="attendance-7" author="Przemek">
+        <insert tableName="attendance">
+            <column name="entry_date" valueDate="2024-02-18 05:12:59"/>
+            <column name="exit_date" valueDate="2024-02-18 11:01:59"/>
+            <column name="child_id" valueNumeric="3"/>
+        </insert>
+    </changeSet>
+    <changeSet id="attendance-8" author="Przemek">
+        <insert tableName="attendance">
+            <column name="entry_date" valueDate="2024-01-17 08:12:59"/>
+            <column name="exit_date" valueDate="2024-01-17 12:01:00"/>
+            <column name="child_id" valueNumeric="3"/>
+        </insert>
+    </changeSet>
+    <changeSet id="attendance-9" author="Przemek">
+        <insert tableName="attendance">
+            <column name="entry_date" valueDate="2024-01-18 09:12:59"/>
+            <column name="exit_date" valueDate="2024-01-18 11:12:59"/>
+            <column name="child_id" valueNumeric="3"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="attendance-10" author="Przemek">
+        <insert tableName="attendance">
+            <column name="entry_date" valueDate="2024-02-18 05:12:59"/>
+            <column name="exit_date" valueDate="2024-02-18 11:01:59"/>
+            <column name="child_id" valueNumeric="4"/>
+        </insert>
+    </changeSet>
+    <changeSet id="attendance-11" author="Przemek">
+        <insert tableName="attendance">
+            <column name="entry_date" valueDate="2024-01-17 08:12:59"/>
+            <column name="exit_date" valueDate="2024-01-17 12:01:00"/>
+            <column name="child_id" valueNumeric="4"/>
+        </insert>
+    </changeSet>
+    <changeSet id="attendance-12" author="Przemek">
+        <insert tableName="attendance">
+            <column name="entry_date" valueDate="2024-01-18 09:12:59"/>
+            <column name="exit_date" valueDate="2024-01-18 11:12:59"/>
+            <column name="child_id" valueNumeric="4"/>
+        </insert>
+    </changeSet>
+
+
+</databaseChangeLog>
