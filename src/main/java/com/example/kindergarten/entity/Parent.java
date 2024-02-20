@@ -5,7 +5,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.LinkedHashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -23,5 +22,6 @@ public class Parent {
 
     @OneToMany
     @JoinColumn(name = "parent_id")
-    private List<Child> children;
+    @OrderBy("firstname ASC")
+    private Set<Child> children = new LinkedHashSet<>();
 }

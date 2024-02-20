@@ -7,14 +7,12 @@ import com.example.kindergarten.dto.SchoolDto;
 import com.example.kindergarten.entity.Attendance;
 import com.example.kindergarten.entity.Child;
 import com.example.kindergarten.entity.Parent;
-import com.example.kindergarten.entity.School;
 import com.example.kindergarten.properties.SchoolProperties;
 import org.mapstruct.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.math.BigDecimal;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.IntStream;
 
 @Mapper(componentModel = "spring")
@@ -27,13 +25,15 @@ public abstract class CommonMapper {
 
     public SchoolDto mapToSchoolDto(List<Parent> parents) {
         var parentsDto = mapToParentDtoList(parents);
-        String schoolName = parents.get(0).getChildren().get(0).getSchool().getName();
-        BigDecimal reduce = parentsDto.stream().map(x -> calcTotalPricePerParent(x)).reduce(BigDecimal.ZERO, BigDecimal::add);
+        var schoolName = parents.get(0).getChildren().stream().findAny().get().getSchool().getName();
+        var totalAmount = parentsDto.stream()
+                .map(parent -> calcTotalPricePerParent(parent))
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
 
 
         return SchoolDto.builder()
                 .name(schoolName)
-                .totalPrice(reduce)
+                .totalAmount(totalAmount)
                 .parents(parentsDto)
                 .build();
     }

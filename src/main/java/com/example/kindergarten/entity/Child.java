@@ -5,7 +5,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.LinkedHashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -17,13 +16,19 @@ public class Child {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @OrderColumn
     private String firstname;
     
     private String lastname;
 
     @OneToMany
     @JoinColumn(name = "child_id")
-    private List<Attendance> attendances;
+    @OrderBy("entryDate ASC")
+    private Set<Attendance> attendances = new LinkedHashSet<>();
+
+    @ManyToOne
+    @JoinColumn(name = "parent_id")
+    private Parent parent;
 
     @ManyToOne
     @JoinColumn(name = "school_id")

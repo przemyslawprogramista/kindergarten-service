@@ -21,5 +21,10 @@ public class ExceptionHandler {
         return ResponseEntity.badRequest().body(body);
     }
 
+    @org.springframework.web.bind.annotation.ExceptionHandler({ NotFoundException.class })
+    public final ResponseEntity handleNotFoundException() {
+        return ResponseEntity.notFound().build();
+    }
+
 
 }
