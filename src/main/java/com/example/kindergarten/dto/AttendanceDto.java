@@ -11,5 +11,7 @@ public class AttendanceDto {
 
     private LocalDateTime exitDate;
 
-    private ChildDto child;
+    private int allHours;
+
+    private int allPaidHours;
 }

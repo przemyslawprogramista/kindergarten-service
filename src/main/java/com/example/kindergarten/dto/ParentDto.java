@@ -4,18 +4,17 @@ import lombok.Data;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Set;
 
 @Data
-public class ChildDto {
+public class ParentDto {
 
     private String firstname;
     
     private String lastname;
 
-    private int totalPaidHours;
-
     private BigDecimal totalPrice;
 
-    private List<AttendanceDto> attendances;
+    private List<ChildDto> children;
 
 }

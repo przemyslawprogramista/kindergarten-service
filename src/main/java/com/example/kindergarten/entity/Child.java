@@ -1,8 +1,12 @@
-package com.example.kindergarten.domain;
+package com.example.kindergarten.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -17,11 +21,12 @@ public class Child {
     
     private String lastname;
 
-    @ManyToOne
-    @JoinColumn(name = "parent_id")
-    private Parent parent;
+    @OneToMany
+    @JoinColumn(name = "child_id")
+    private List<Attendance> attendances;
 
     @ManyToOne
     @JoinColumn(name = "school_id")
     private School school;
+
 }

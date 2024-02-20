@@ -1,4 +1,4 @@
-package com.example.kindergarten.domain;
+package com.example.kindergarten.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -20,8 +20,4 @@ public class Attendance {
 
     @Column(name = "exit_date", nullable = false)
     private LocalDateTime exitDate;
-
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "child_id", nullable = false)
-    private Child child;
 }

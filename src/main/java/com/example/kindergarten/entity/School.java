@@ -1,10 +1,13 @@
-package com.example.kindergarten.domain;
+package com.example.kindergarten.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.math.BigDecimal;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -19,4 +22,7 @@ public class School {
 
     @Column(name = "hour_price")
     private BigDecimal hourPrice;
+
+    @OneToMany(mappedBy = "school")
+    private List<Child> children;
 }
