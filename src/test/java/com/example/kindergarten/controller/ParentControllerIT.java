@@ -18,27 +18,47 @@ class ParentControllerIT extends MySqlContainerBaseIT {
 
     @Test
     @SneakyThrows
-    void testGetAttendancesByParent() {
+    void testGetAttendancesByParentShouldSuccess() {
         api.perform(get("/parent/attendance")
                         .param("parentId", "3")
                         .param("month", "1"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.attendances[0].child.firstname").value("Amelia"))
-                .andExpect(jsonPath("$.attendances[0].child.lastname").value("Mak"))
-                .andExpect(jsonPath("$.attendances[0].entryDate").value("2024-01-17T08:12:59"))
-                .andExpect(jsonPath("$.attendances[0].exitDate").value("2024-01-17T12:01:00"))
-                .andExpect(jsonPath("$.attendances[1].child.firstname").value("Amelia"))
-                .andExpect(jsonPath("$.attendances[1].child.lastname").value("Mak"))
-                .andExpect(jsonPath("$.attendances[1].entryDate").value("2024-01-18T09:12:59"))
-                .andExpect(jsonPath("$.attendances[1].exitDate").value("2024-01-18T11:12:59"))
-                .andExpect(jsonPath("$.attendances[2].child.firstname").value("Józefa"))
-                .andExpect(jsonPath("$.attendances[2].child.lastname").value("Mak"))
-                .andExpect(jsonPath("$.attendances[2].entryDate").value("2024-01-17T08:12:59"))
-                .andExpect(jsonPath("$.attendances[2].exitDate").value("2024-01-17T12:01:00"))
-                .andExpect(jsonPath("$.attendances[3].child.firstname").value("Józefa"))
-                .andExpect(jsonPath("$.attendances[3].child.lastname").value("Mak"))
-                .andExpect(jsonPath("$.attendances[3].entryDate").value("2024-01-18T09:12:59"))
-                .andExpect(jsonPath("$.attendances[3].exitDate").value("2024-01-18T11:12:59"))
-                .andExpect(jsonPath("$.totalPrice").value(13.29));
+                .andExpect(jsonPath("$.firstname").value("Anna"))
+                .andExpect(jsonPath("$.lastname").value("Mak"))
+                .andExpect(jsonPath("$.totalPrice").value(13.29))
+                .andExpect(jsonPath("$.children[0].firstname").value("Amelia"))
+                .andExpect(jsonPath("$.children[0].lastname").value("Mak"))
+                .andExpect(jsonPath("$.children[0].totalPaidHours").value(1))
+                .andExpect(jsonPath("$.children[0].totalPrice").value(7.79))
+                .andExpect(jsonPath("$.children[0].attendances[0].entryDate").value("2024-01-17T08:12:59"))
+                .andExpect(jsonPath("$.children[0].attendances[0].exitDate").value("2024-01-17T12:01:00"))
+                .andExpect(jsonPath("$.children[0].attendances[0].allHours").value(5))
+                .andExpect(jsonPath("$.children[0].attendances[0].allPaidHours").value(1))
+                .andExpect(jsonPath("$.children[0].attendances[1].entryDate").value("2024-01-18T09:12:59"))
+                .andExpect(jsonPath("$.children[0].attendances[1].exitDate").value("2024-01-18T11:12:59"))
+                .andExpect(jsonPath("$.children[0].attendances[1].allHours").value(3))
+                .andExpect(jsonPath("$.children[0].attendances[1].allPaidHours").value(0))
+
+                .andExpect(jsonPath("$.children[1].firstname").value("Józefa"))
+                .andExpect(jsonPath("$.children[1].lastname").value("Mak"))
+                .andExpect(jsonPath("$.children[1].totalPaidHours").value(1))
+                .andExpect(jsonPath("$.children[1].totalPrice").value(5.50))
+                .andExpect(jsonPath("$.children[1].attendances[0].entryDate").value("2024-01-17T08:12:59"))
+                .andExpect(jsonPath("$.children[1].attendances[0].exitDate").value("2024-01-17T12:01:00"))
+                .andExpect(jsonPath("$.children[1].attendances[0].allHours").value(5))
+                .andExpect(jsonPath("$.children[1].attendances[0].allPaidHours").value(1))
+                .andExpect(jsonPath("$.children[1].attendances[1].entryDate").value("2024-01-18T09:12:59"))
+                .andExpect(jsonPath("$.children[1].attendances[1].exitDate").value("2024-01-18T11:12:59"))
+                .andExpect(jsonPath("$.children[1].attendances[1].allHours").value(3))
+                .andExpect(jsonPath("$.children[1].attendances[1].allPaidHours").value(0));
+    }
+
+    @Test
+    @SneakyThrows
+    void testGetAttendancesByParentShould404() {
+        api.perform(get("/parent/attendance")
+                        .param("parentId", "3")
+                        .param("month", "5"))
+                .andExpect(status().isNotFound());
     }
 }

@@ -1,4 +1,4 @@
-package com.example.kindergarten.domain;
+package com.example.kindergarten.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;

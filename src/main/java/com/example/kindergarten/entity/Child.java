@@ -1,8 +1,11 @@
-package com.example.kindergarten.domain;
+package com.example.kindergarten.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -13,9 +16,15 @@ public class Child {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @OrderColumn
     private String firstname;
     
     private String lastname;
+
+    @OneToMany
+    @JoinColumn(name = "child_id")
+    @OrderBy("entryDate ASC")
+    private Set<Attendance> attendances = new LinkedHashSet<>();
 
     @ManyToOne
     @JoinColumn(name = "parent_id")
@@ -24,4 +33,5 @@ public class Child {
     @ManyToOne
     @JoinColumn(name = "school_id")
     private School school;
+
 }

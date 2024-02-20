@@ -1,7 +1,7 @@
 package com.example.kindergarten.controller;
 
-import com.example.kindergarten.dto.AttendanceSummaryDto;
-import com.example.kindergarten.service.AttendanceService;
+import com.example.kindergarten.dto.SchoolDto;
+import com.example.kindergarten.service.ParentService;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import lombok.RequiredArgsConstructor;
@@ -16,14 +16,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("school")
 public class SchoolController {
 
-    private final AttendanceService attendanceService;
-
+    private final ParentService parentService;
 
     @GetMapping
     @RequestMapping("/attendance")
-    public ResponseEntity<AttendanceSummaryDto> getAttendancesBySchool(@RequestParam long schoolId,
-                                                                       @RequestParam @Min(1) @Max(12) int month) {
-        AttendanceSummaryDto body = attendanceService.getAllAttendancesBySchool(schoolId, month);
-        return ResponseEntity.ok(body);
+    public ResponseEntity<SchoolDto> getAttendancesBySchool(@RequestParam long schoolId,
+                                                            @RequestParam @Min(1) @Max(12) int month) {
+        return ResponseEntity.ok(parentService.getParentsBySchoolIdAndSpecificMonth(schoolId, month));
     }
 }

@@ -6,7 +6,14 @@ import java.math.BigDecimal;
 import java.util.List;
 
 @Data
-public class AttendanceSummaryDto {
-    private List<AttendanceDto> attendances;
+public class ParentDto {
+
+    private String firstname;
+    
+    private String lastname;
+
     private BigDecimal totalPrice;
+
+    private List<ChildDto> children;
+
 }
