@@ -7,7 +7,6 @@ import com.example.kindergarten.mapper.CommonMapper;
 import com.example.kindergarten.repository.ParentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
@@ -17,7 +16,6 @@ public class ParentService {
 
     private final CommonMapper mapper;
 
-    @Transactional
     public ParentDto getAllAttendancesByParent(Long parentId, int month) {
         var parent = repository.findParentByIdAndSpecificMonth(parentId, month)
                 .orElseThrow(() -> new NotFoundException(String.format("Not found attendances for parentId: %s and month %s", parentId, month)));
